@@ -1,180 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treino e Dieta Personalizados</title>
-    <!-- CSS interno -->
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #ffffff;
-            color: #000;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #000;
-            padding: 20px;
-        }
-
-        h1, h2 {
-            text-align: center;
-            color: #0056b3;
-            margin-bottom: 1rem;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input, select, button {
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        button {
-            background-color: #0056b3;
-            color: #fff;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #003d82;
-        }
-
-        #result {
-            margin-top: 1.5rem;
-            padding: 15px;
-            background-color: #f0f8ff;
-            border: 1px solid #0056b3;
-            border-radius: 5px;
-        }
-
-        .highlight {
-            color: #0056b3;
-            font-weight: bold;
-        }
-    </style>
-</head>
+<html>
 <body>
-    <div class="container">
-        <h1>Personalizador de Treino e Dieta</h1>
-        <form id="personalForm">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" placeholder="Digite seu nome completo" required>
 
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" placeholder="Digite sua idade" required>
+<h2>Dados físicos</h2>
 
-            <label for="altura">Altura (cm):</label>
-            <input type="number" id="altura" placeholder="Digite sua altura (ex: 178)" required>
+<form action="redirect.html">
+  <label for="fname">Nome completo:</label><br>
+  <input type="text" id="fname" name="fname" value="Otavio Augusto Correia"><br>
+  <label for="lage">Idade:</label><br>
+  <input type="text" id="lage" name="lage" value="17"><br>
+  <label for="lheigt">Altura:</label><br>
+  <input type="text" id="lheigt" name="lheigt" value="179 cm"><br>
+   <label for="lweight">Peso:</label><br>
+  <input type="text" id="lweight" name="lweight" value="70 kg"><br>
+   <label for="lpercent">Percentual de gordura:</label><br>
+  <input type="text" id="lpercent" name="lpercent" value="4.69%"><br><br>
+  <input type="submit" value="Enviar">
+</form> 
 
-            <label for="peso">Peso (kg):</label>
-            <input type="number" id="peso" placeholder="Digite seu peso (ex: 70)" required>
+<p>AO clicar no botão "Enviar", você sera redirecionado.</p>
 
-            <label for="gordura">Percentual de Gordura (%):</label>
-            <input type="number" id="gordura" placeholder="Digite seu percentual de gordura" required>
-
-            <label for="objetivo">Objetivo:</label>
-            <select id="objetivo" required>
-                <option value="" disabled selected>Escolha seu objetivo</option>
-                <option value="ganhar_massa">Ganhar Massa</option>
-                <option value="perder_gordura">Perder Gordura</option>
-            </select>
-
-            <button type="submit">Gerar Treino e Dieta</button>
-        </form>
-
-        <div id="result"></div>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        document.getElementById("personalForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const nome = document.getElementById("nome").value;
-            const idade = document.getElementById("idade").value;
-            const altura = document.getElementById("altura").value;
-            const peso = document.getElementById("peso").value;
-            const gordura = document.getElementById("gordura").value;
-            const objetivo = document.getElementById("objetivo").value;
-
-            let treino = "";
-            let dieta = "";
-
-            if (objetivo === "ganhar_massa") {
-                treino = `
-                    <ul>
-                        <li><span class="highlight">Flexões</span>: 3 séries de 12-15 repetições</li>
-                        <li><span class="highlight">Agachamentos</span>: 4 séries de 10-12 repetições</li>
-                        <li><span class="highlight">Abdominais</span>: 3 séries de 20 repetições</li>
-                        <li><span class="highlight">Polichinelos</span>: 3 séries de 30 segundos</li>
-                    </ul>
-                `;
-                dieta = `
-                    <p>Consuma alimentos ricos em proteínas e carboidratos complexos:</p>
-                    <ul>
-                        <li>Peito de frango, ovos, peixe</li>
-                        <li>Arroz integral, batata-doce, aveia</li>
-                        <li>Vegetais e frutas diversas</li>
-                        <li>Inclua shakes de proteína pós-treino</li>
-                    </ul>
-                `;
-            } else if (objetivo === "perder_gordura") {
-                treino = `
-                    <ul>
-                        <li><span class="highlight">Corrida no lugar</span>: 5 séries de 1 minuto</li>
-                        <li><span class="highlight">Prancha</span>: 3 séries de 30 segundos</li>
-                        <li><span class="highlight">Burpees</span>: 3 séries de 10 repetições</li>
-                        <li><span class="highlight">Polichinelos</span>: 3 séries de 45 segundos</li>
-                    </ul>
-                `;
-                dieta = `
-                    <p>Consuma alimentos saudáveis com baixo teor calórico:</p>
-                    <ul>
-                        <li>Frango grelhado, peixe magro</li>
-                        <li>Vegetais folhosos, brócolis, couve-flor</li>
-                        <li>Frutas de baixo índice glicêmico (maçã, pera)</li>
-                        <li>Evite açúcares e frituras</li>
-                    </ul>
-                `;
-            }
-
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = `
-                <h2>Resultado Personalizado</h2>
-                <p>Olá <span class="highlight">${nome}</span>! Aqui está seu plano:</p>
-                <h3>🏋️ Treino</h3>
-                ${treino}
-                <h3>🍎 Dieta</h3>
-                ${dieta}
-            `;
-        });
-    </script>
 </body>
 </html>
-
